@@ -23,6 +23,6 @@
 <% @post.comments.each do |comment| %>
   <div class="well span8">
     <em>"<%= comment.body %>"</em><br/>
-    by <%= link_to comment.creator.username, '' %> at <%= comment.created_at %>
+    by <%= link_to comment.creator.username, '' %> at <%= display_datetime(comment.created_at) %>
   </div>
 <% end %>

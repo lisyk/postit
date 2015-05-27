@@ -8,5 +8,13 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true, on: :create
 
+  before_save :generate_user_slug
 
+  def to_param
+    self.slug
+  end
+
+  def generate_user_slug
+    self.slug = self.username.gsub(" ", "-").downcase
+  end
 end
